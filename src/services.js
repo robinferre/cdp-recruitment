@@ -17,6 +17,7 @@ function getArguments(args, argsRegex) {
 
 function filterAnimals(data, filterReg) {
   const countries = copyDeeplyNestedArr(data);
+  
   return countries.reduce((countriesAcc, countryCurr) => {
     countryCurr.people = countryCurr.people.reduce((peopleAcc, peopleCurr) => {
       peopleCurr.animals = peopleCurr.animals.filter((animal) =>
@@ -36,12 +37,15 @@ function filterAnimals(data, filterReg) {
 
 function countElements(data) {
   const countries = copyDeeplyNestedArr(data);
+
   return countries.map((country) => {
     country.name = country.name.concat(` [${country.people.length}]`);
+
     country.people = country.people.map((individual) => {
       individual.name = individual.name.concat(
         ` [${individual.animals.length}]`
       );
+
       return individual;
     });
 

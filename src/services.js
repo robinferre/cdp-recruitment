@@ -17,8 +17,8 @@ function getArguments(args, argsRegex) {
 
 function filterAnimals(data, filterReg) {
   const countries = copyDeeplyNestedArr(data);
-  return countries.reduce((dataAcc, dataCurr) => {
-    dataCurr.people = dataCurr.people.reduce((peopleAcc, peopleCurr) => {
+  return countries.reduce((countriesAcc, countryCurr) => {
+    countryCurr.people = countryCurr.people.reduce((peopleAcc, peopleCurr) => {
       peopleCurr.animals = peopleCurr.animals.filter((animal) =>
         filterReg.test(animal.name)
       );
@@ -28,24 +28,24 @@ function filterAnimals(data, filterReg) {
       return peopleAcc;
     }, []);
 
-    if (dataCurr.people.length > 0) return [...dataAcc, dataCurr];
+    if (countryCurr.people.length > 0) return [...countriesAcc, countryCurr];
 
-    return dataAcc;
+    return countriesAcc;
   }, []);
 }
 
 function countElements(data) {
   const countries = copyDeeplyNestedArr(data);
-  return countries.map((el) => {
-    el.name = el.name.concat(` [${el.people.length}]`);
-    el.people = el.people.map((individual) => {
+  return countries.map((country) => {
+    country.name = country.name.concat(` [${country.people.length}]`);
+    country.people = country.people.map((individual) => {
       individual.name = individual.name.concat(
         ` [${individual.animals.length}]`
       );
       return individual;
     });
 
-    return el;
+    return country;
   });
 }
 

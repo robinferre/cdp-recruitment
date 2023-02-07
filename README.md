@@ -8,11 +8,11 @@ I choose to filter with case-insensitive mode activated
 to run the script: 
 ```
 cd src/
-node app.js (--fitler=[str]) (--count)
+node app.js (--filter=[str]) (--count)
 ```
 or
 ```
-npm start -- (--fitler=[str]) (--count)
+npm start -- (--filter=[str]) (--count)
 ```
 
 to run the tests: 

@@ -44,8 +44,8 @@ describe('getArguments', () => {
   });
 
   test('should return an object with filter properly set and count set to true if the both args are passed', () => {
-    const { filter, count } = getArguments([MOCK_ARG_COUNT], ARGS_REGEX);
-    expect(filter).toBe(undefined);
+    const { filter, count } = getArguments([MOCK_ARG_COUNT, MOCK_ARG_FILTER], ARGS_REGEX);
+    expect(filter).toBe('ry');
     expect(count).toEqual(true);
   });
 });
